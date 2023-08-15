@@ -84,3 +84,38 @@ export async function fetchThreads(pageNumber = 1, pageSize = 20) {
         Next
     }
 }
+
+export async function fetchThreadById(id: string) {
+    connectToDatabase();
+
+    try {
+        // TODO: populate community
+        const thread = await Thread.findById(id)
+        .populate({
+            path: 'author',
+            model: User,
+            select: "_id id name image"
+        })
+        .populate({
+            path: 'children',
+            populate: [
+                {
+                    path: 'author',
+                    model: User,
+                    select: "_id id parentId image"
+                },
+                {
+                    path: 'children',
+                    model: Thread,
+                    populate: {
+                        path: 'author',
+                        model: User,
+                        select: "_id id parentId image"
+                    }
+                }
+            ]
+        })
+    } catch (error: any) {
+        
+    }
+}
