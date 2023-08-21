@@ -110,12 +110,14 @@ export async function fetchThreadById(id: string) {
                     populate: {
                         path: 'author',
                         model: User,
-                        select: "_id id parentId image"
+                        select: "_id id name parentId image"
                     }
                 }
             ]
-        })
+        }).exec()
+
+        return thread;
     } catch (error: any) {
-        
+        throw new Error(`Failed to fetch thread: ${error.message}`)
     }
 }
