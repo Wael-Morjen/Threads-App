@@ -68,7 +68,8 @@ const ThreadCard: React.FC<ThreadCardProps> = ({
                         <p className="mt-2 text-small-regular text-light-2">
                             {content}
                         </p>
-                        <div className="mt-4 gap-3 flex-col flex">
+
+                        <div className={`${isComment && 'mb-10'} mt-4 gap-3 flex-col flex`}>
                             <div className="flex gap-4">
                                 <Image
                                     src="/assets/heart-gray.svg"
