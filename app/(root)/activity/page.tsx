@@ -40,6 +40,12 @@ const Page = async () => {
                                         height={20}
                                         className="rounded-full"
                                     />
+                                    <p className="!text-small-regular text-light-1">
+                                        <span className="mr-1 text-primary-500">
+                                            {activity.author.name}
+                                        </span>{" "}
+                                        replied to your Thread
+                                    </p>
                                 </article>
                             </Link>
                         ))}
