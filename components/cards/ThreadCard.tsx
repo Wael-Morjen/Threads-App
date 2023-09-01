@@ -105,8 +105,8 @@ const ThreadCard: React.FC<ThreadCardProps> = ({
                             </div>
                             {isComment && comments.length > 0 && (
                                 <Link href={`/thread/${id}`}>
-                                    <p className="mt-1 text-subtle-medium text-gray-1">
-                                        {comments.length} replies
+                                    <p className='mt-1 text-subtle-medium text-gray-1'>
+                                        {comments.length} repl{comments.length > 1 ? "ies" : "y"}
                                     </p>
                                 </Link>
                             )}
@@ -118,24 +118,25 @@ const ThreadCard: React.FC<ThreadCardProps> = ({
                 {/* TODO: Show Comments Logo */}
 
             </div>
-                {!isComment && community && (
-                    <Link 
-                        href={`/communities/${community.id}`}
-                        className="mt-5 flex items-center"
-                    >
-                        <p className="text-subtle-medium text-gray-1"> 
-                            {formatDateString(createdAt)}
-                            {" "} - {community.name} Community
-                        </p>
-                        <Image 
-                            src={community.image}
-                            alt={community.name}
-                            width={14}
-                            height={14}
-                            className="ml-1 rounded-full object-cover"
-                        />
-                    </Link>
-                )}
+            {!isComment && community && (
+                <Link
+                    href={`/communities/${community.id}`}
+                    className='mt-5 flex items-center'
+                >
+                    <p className='text-subtle-medium text-gray-1'>
+                        {formatDateString(createdAt)}
+                        {community && ` - ${community.name} Community`}
+                    </p>
+
+                    <Image
+                        src={community.image}
+                        alt={community.name}
+                        width={14}
+                        height={14}
+                        className='ml-1 rounded-full object-cover'
+                    />
+                </Link>
+            )}
         </article>
     );
 }

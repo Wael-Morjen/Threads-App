@@ -8,6 +8,7 @@ interface ProfileHeaderProps {
     bio: string;
     accountId: string;
     authUserId: string;
+    type?: 'User' | 'Community'
 }
 
 const ProfileHeader: React.FC<ProfileHeaderProps> = ({
@@ -15,6 +16,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     username,
     imgUrl,
     bio,
+    type,
     accountId,
     authUserId
 }) => {
